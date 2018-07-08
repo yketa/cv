@@ -1,14 +1,14 @@
-\ProvidesClass{cvtemplate}[2018/07/01 CV class]
+\ProvidesClass{cvtemplate_fr}[2018/07/01 CV class]
 \LoadClass{article}
 \NeedsTeXFormat{LaTeX2e}
 
 %----------------------------------------------------------------------------------------
 %	 REQUIRED PACKAGES
-%-----------------------------------------------------------------------	-----------------
+%----------------------------------------------------------------------------------------
 
 \RequirePackage[quiet]{fontspec}
 %\RequirePackage[scaled]{helvet}
-%\renewcommand\familydefault{\sfdefault} 
+%\renewcommand\familydefault{\sfdefault}
 
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
 
@@ -174,7 +174,7 @@
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
 % Command for printing skill progress bars
-\newcommand\programming[1]{ 
+\newcommand\programming[1]{
 	\renewcommand{\programming}{
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
@@ -185,27 +185,27 @@
 		\end{tikzpicture}
 		\vspace{3mm}
 		\begin{tikzpicture}
-			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ 5 years experience};
+			\node [above right] at (0, 4) {0 ann\'ee \arrow{0.7} ~ 5 ann\'ees d'\'experience};
 		\end{tikzpicture}
 		\vspace{-8mm}
 	}
 }
-\newcommand\education[1]{ 
+\newcommand\education[1]{
 	\renewcommand{\education}{
 		{#1}
 	}
 }
-\newcommand\interests[1]{ 
+\newcommand\interests[1]{
 	\renewcommand{\interests}{
 		{#1}
 	}
 }
-\newcommand\operatingsystems[1]{ 
+\newcommand\operatingsystems[1]{
 	\renewcommand{\operatingsystems}{
 		{#1}
 	}
 }
-\newcommand\languages[1]{ 
+\newcommand\languages[1]{
 	\renewcommand{\languages}{
 		{#1}
 	}
@@ -223,31 +223,31 @@
   %------------------------------------------------
 
   \begin{textblock}{6}(0.5, 0.2)
-    
+
     %-----------------------------------------------
-    
+
     \vspace{4mm}
-    
+
     {\bf\LARGE\color{darkgray}\cvname}
-    
+
     \vspace{0.5mm}
 
     %------------------------------------------------
-    
+
     {\large\color{black!80}\cvjobtitle}
 
     %------------------------------------------------
-    
+
     \vspace{3mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.25cm}p{5cm}}
-    
+
      \ifthenelse{\equal{\cvbirthday}{}}{}{
             {$
               \begin{array}{l}
               \hspace{0mm} \huge \textnormal{\textcolor{black}{\faBirthdayCake}}
               \end{array}
-              $} 
+              $}
             & \cvbirthday \\
             }
 
@@ -256,62 +256,64 @@
               \begin{array}{l}
               \hspace{0mm} \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelopeO}}}
               \end{array}
-              $} 
+              $}
             & \href{mailto:\cvmail}{\cvmail} \\
             }
- 
-        \ifthenelse{\equal{\cvgithub}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{0mm} \huge \href{https://www.github.com/\cvgithub}{\textnormal{\faGithub}}
-              \end{array}
-              $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            }   
-            
+
+      \ifthenelse{\equal{\cvgithub}{}}{}{
+          {$
+            \begin{array}{l}
+            % \hspace{0mm} \huge
+            \hspace{0mm} \huge \href{https://github.com/\cvgithub}{\textnormal{\faGithub}}
+            \end{array}
+            % $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
+            $} & \href{https://github.com/\cvgithub}{github.com/\cvgithub} \\
+          }
+
     \end{tabular}
 
     %------------------------------------------------
 
-    \profilesection{Education}{2.65cm}
-    
+    \profilesection{Formation}{2.6cm}
+
     \vspace{3mm}
-        
+
         \education
-        
+
         %------------------------------------------------
-        
+
         \vspace{3mm}
-    
-    \profilesection{Skills}{4.2cm}
-        
+
+    \profilesection{Comp\'etences}{1.4cm}
+
         \vspace{3mm}
-       
-	 {\large \textbf{Programming}} 
+
+	 {\large \textbf{Programmation}}
 
 		 \programming
-         
+
         \vspace{3mm}
-        
-         {\large \textbf{Operating systems}} 
+
+         {\large \textbf{Syst\`emes d'exploitation}}
 
 		 \operatingsystems
 
         \vspace{3mm}
-        
-         {\large \textbf{Languages}} 
+
+         {\large \textbf{Langues}}
 
 		 \languages
-		 
+
        %------------------------------------------------
-      
+
         \vspace{3mm}
-         
-        \profilesection{Interests}{3.1cm} 
-        
+
+        \profilesection{Int\'er\^ets}{3.5cm}
+
         \vspace{3mm}
-        
+
         \interests
-      
+
   \end{textblock}
 }
 
@@ -353,18 +355,19 @@
 }
 
 \newcommand{\cvitem}[7]{%
-	\parbox[t]{0.17\textwidth}{#1 -\\#2}&
+	\parbox[t]{0.14\textwidth}{\hfill#1\\\mbox{}\hfill- #2}
+  \parbox[t]{0.03\textwidth}{}
 	\ifblank{#5}{
-		\parbox[t]{0.83\textwidth}{\textbf{#3}\\{\small#4}}%
+		&\parbox[t]{0.83\textwidth}{\textbf{#3}\\{\small#4}}%
 	}{
-		\parbox[t]{0.68\textwidth}{\textbf{#3}\\{\small#4}}%
+		&\parbox[t]{0.68\textwidth}{\textbf{#3}\\{\small#4}}%
 		\parbox[t]{0.15\textwidth}{
-			{\hfill\footnotesize\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
+			{\hfill\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
 	}\\
 
     &\parbox[t]{0.83\textwidth}{%
     		\vspace{0.2mm}
-		\ifblank{#6}{}{\textbf{Supervisor:} #6\\}
+		\ifblank{#6}{}{\IfSubStr{#6}{,}{\textbf{Superviseurs :}}{\textbf{Superviseur :}} #6\\}
 		#7%
 	}\\
 }
@@ -416,4 +419,3 @@
     % sets the opacity at which the bubble text is shown
     bubble text opacity = 1,
 }
-

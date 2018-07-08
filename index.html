@@ -1,5 +1,8 @@
 <html>
 	<body>
-		<iframe src="cv.pdf" style="width: 100%;height: 100%;"></iframe>
+		<input type="radio" name="language" value="English" onclick="document.getElementById('cv').src = 'cv_en.pdf';" checked> English |
+		<input type="radio" name="language" value="French" onclick="document.getElementById('cv').src = 'cv_fr.pdf';"> Français <br>
+
+		<iframe src="cv_en.pdf" style="width: 100%;height: 100%;" id="cv"></iframe>
 	</body>
 </html>
