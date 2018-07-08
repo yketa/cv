@@ -1,2 +1,4 @@
 *.DS_Store
 Icon*
+src/aux
+src/*.pdf
