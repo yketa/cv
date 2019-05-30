@@ -12,5 +12,5 @@ dir:
 	@mkdir -p aux
 
 clean:
-	@rm -f `ls cv* | grep -v tex`
+	@rm -f `ls cv* | grep -v tex | grep -v cls`
 	@rm -rf aux

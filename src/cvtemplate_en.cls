@@ -174,7 +174,7 @@
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
 % Command for printing skill progress bars
-\newcommand\programming[1]{
+\newcommand\programming[2]{
 	\renewcommand{\programming}{
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
@@ -185,7 +185,7 @@
 		\end{tikzpicture}
 		\vspace{3mm}
 		\begin{tikzpicture}
-			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ 5 years experience};
+			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ #2 years experience};
 		\end{tikzpicture}
 		\vspace{-8mm}
 	}
