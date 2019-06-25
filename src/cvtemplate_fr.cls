@@ -137,10 +137,10 @@
 % --------------------------------------------------------------------------------------
 % 	FONTS
 %-------------------------------------------------------------------------------------
-\newfontfamily\bodyfont[]{Helvetica}
-\newfontfamily\thinfont[]{Helvetica}
-\newfontfamily\headingfont[]{Helvetica}
-\setmainfont[]{Helvetica}
+\newfontfamily\bodyfont[]{OpenSans}
+\newfontfamily\thinfont[]{OpenSans}
+\newfontfamily\headingfont[]{OpenSans}
+\setmainfont[]{OpenSans}
 
 %----------------------------------------------------------------------------------------
 %	 SIDEBAR DEFINITIONS
