@@ -222,7 +222,7 @@
 
   %------------------------------------------------
 
-  \begin{textblock}{6}(0.5, 0.2)
+  \begin{textblock}{6}(0.3, 0.2)
 
     %-----------------------------------------------
 
@@ -258,6 +258,15 @@
               \end{array}
               $}
             & \href{mailto:\cvmail}{\cvmail} \\
+            }
+
+      \ifthenelse{\equal{\cvsite}{}}{}{
+            {$
+              \begin{array}{l}
+              \hspace{0mm} \huge \href{https://\cvsite}{\textnormal{\textcolor{black}{\faGlobe}}}
+              \end{array}
+              $}
+            & \href{https://\cvsite}{\cvsite} \\
             }
 
       \ifthenelse{\equal{\cvgithub}{}}{}{
@@ -356,16 +365,16 @@
 
 \newcommand{\cvitem}[7]{%
 	\parbox[t]{0.14\textwidth}{\hfill#1\\\mbox{}\hfill- #2}
-  \parbox[t]{0.03\textwidth}{}
+  \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
-		&\parbox[t]{0.83\textwidth}{\textbf{#3}\\{\small#4}}%
+		&\parbox[t]{0.85\textwidth}{\textbf{#3}\\{\small#4}}%
 	}{
-		&\parbox[t]{0.68\textwidth}{\textbf{#3}\\{\small#4}}%
-		\parbox[t]{0.15\textwidth}{
+		&\parbox[t]{0.70\textwidth}{\textbf{#3}\\{\small#4}}%
+		\parbox[t]{0.17\textwidth}{
 			{\hfill\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
 	}\\
 
-    &\parbox[t]{0.83\textwidth}{%
+    &\parbox[t]{0.85\textwidth}{%
     		\vspace{0.2mm}
 		\ifblank{#6}{}{\IfSubStr{#6}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #6\\}
 		#7%
