@@ -76,6 +76,8 @@
 %	 COLOURS
 %----------------------------------------------------------------------------------------
 
+\definecolor{pink}{HTML}{E85E8A}
+
 \definecolor{white}{RGB}{255,255,255}
 \definecolor{gray}{HTML}{4D4D4D}
 \definecolor{sidecolor}{HTML}{E7E7E7}
@@ -147,7 +149,7 @@
 %----------------------------------------------------------------------------------------
 
 \setlength{\TPHorizModule}{1cm} % Left margin
-\setlength{\TPVertModule}{1cm} % Top margin
+\setlength{\TPVertModule}{0.5cm} % Top margin
 
 \newlength\imagewidth
 \newlength\imagescale
@@ -179,7 +181,7 @@
 		\begin{tikzpicture}
 			\foreach [count=\i] \x/\y in {#1}{
 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,ppurple](0,\i) rectangle (\y,\i+0.4);
+				\draw[fill=white,pink](0,\i) rectangle (\y,\i+0.4);
 				\node [above right] at (0,\i+0.35) {\x};
 			}
 		\end{tikzpicture}
@@ -370,8 +372,8 @@
 		&\parbox[t]{0.85\textwidth}{\textbf{#3}\\{\small#4}}%
 	}{
 		&\parbox[t]{0.70\textwidth}{\textbf{#3}\\{\small#4}}%
-		\parbox[t]{0.17\textwidth}{
-			{\hfill\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
+		\parbox[t]{0.17\textwidth}{\centering
+			{\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
 	}\\
 
     &\parbox[t]{0.85\textwidth}{%
@@ -404,7 +406,7 @@
 %	 MARGINS AND LINKS
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=7.6cm,top=0.1cm,right=1cm,bottom=0.1cm,nohead,nofoot]{geometry}
+\RequirePackage[left=7.6cm,top=-0.1cm,right=1cm,bottom=0.1cm,nohead,nofoot]{geometry}
 
 
 \usepackage{smartdiagram}
