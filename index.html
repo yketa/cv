@@ -1,8 +1,16 @@
 <html>
-	<body>
-		<input type="radio" name="language" value="English" onclick="document.getElementById('cv').src = 'cv_en.pdf';" checked> English |
-		<input type="radio" name="language" value="French" onclick="document.getElementById('cv').src = 'cv_fr.pdf';"> Français <br>
-
-		<iframe src="cv_en.pdf" style="width: 100%;height: 100%;" id="cv"></iframe>
-	</body>
+  <head>
+    <link href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" rel="stylesheet">
+    <style>
+      body { background-color: #0c0d0d; color: white; }
+      a { color: #e85e8a; text-decoration: none; }
+      a:hover { color: #f91a61; }
+    </style>
+  </head>
+  <body>
+    <input type="radio" name="language" value="English" onclick="document.getElementById('cv').src = 'cv_en.pdf';" checked> English
+    <input type="radio" name="language" value="French" onclick="document.getElementById('cv').src = 'cv_fr.pdf';"> Français
+    — <a href="https://github.com/yketa/cv"><i class="fab fa-github"></i> source on GitHub</a><br><br>
+    <iframe src="cv_en.pdf" style="width: 100%;height: 100%;" id="cv"></iframe>
+  </body>
 </html>
