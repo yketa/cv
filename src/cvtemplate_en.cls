@@ -185,11 +185,11 @@
 				\node [above right] at (0,\i+0.35) {\x};
 			}
 		\end{tikzpicture}
-		\vspace{3mm}
-		\begin{tikzpicture}
-			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ #2 years experience};
-		\end{tikzpicture}
-		\vspace{-8mm}
+%		\vspace{3mm}
+%		\begin{tikzpicture}
+%			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ #2 years experience};
+%		\end{tikzpicture}
+%		\vspace{-8mm}
 	}
 }
 \newcommand\education[1]{
@@ -211,6 +211,13 @@
 	\renewcommand{\languages}{
 		{#1}
 	}
+}
+
+\newcommand\educationItem[5]{
+\ifblank{#1}{}{{\small #1}}\\
+\textbf{#2} \hfill \ifblank{#3}{}{\textit{#3}}\\
+#4\\
+\ifblank{#5}{}{#5\\}
 }
 
 %---------------------------------------------------------------------------------------
@@ -240,7 +247,7 @@
 
     %------------------------------------------------
 
-    \vspace{3mm}
+    \vspace{1mm}
     \renewcommand{\arraystretch}{2}
     \begin{tabular}{p{1cm} @{\hskip 0.25cm}p{5cm}}
 
@@ -287,29 +294,29 @@
 
     \profilesection{Education}{2.65cm}
 
-    \vspace{3mm}
+    \vspace{1mm}
 
-        \education
+        \parbox[t]{\textwidth}{\education}
 
         %------------------------------------------------
 
-        \vspace{3mm}
+        \vspace{1mm}
 
     \profilesection{Skills}{4.2cm}
 
-        \vspace{3mm}
+        \vspace{1mm}
 
 	 {\large \textbf{Programming}}
 
 		 \programming
 
-        \vspace{3mm}
+%        \vspace{1mm}
+%
+%         {\large \textbf{Operating systems}}
+%
+%		 \operatingsystems
 
-         {\large \textbf{Operating systems}}
-
-		 \operatingsystems
-
-        \vspace{3mm}
+        \vspace{1mm}
 
          {\large \textbf{Languages}}
 
@@ -317,11 +324,11 @@
 
        %------------------------------------------------
 
-        \vspace{3mm}
+        \vspace{1mm}
 
         \profilesection{Interests}{3.1cm}
 
-        \vspace{3mm}
+        \vspace{1mm}
 
         \interests
 
@@ -365,22 +372,27 @@
 	\end{tabular*}
 }
 
-\newcommand{\cvitem}[7]{%
+\newcommand{\cvitem}[9]{%
 	\parbox[t]{0.14\textwidth}{\hfill#1\\\mbox{}\hfill- #2}
   \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
-		&\parbox[t]{0.85\textwidth}{\textbf{#3}\\{\small#4}}%
-	}{
-		&\parbox[t]{0.70\textwidth}{\textbf{#3}\\{\small#4}}%
-		\parbox[t]{0.17\textwidth}{\centering
-			{\raisebox{-16.5\mydepth}{\includegraphics[height=5.2\myheight]{#5}}}}%
-	}\\
+		&\parbox[t]{0.85\textwidth}{
+      \textbf{#3}\\{\small#4}\\
 
-    &\parbox[t]{0.85\textwidth}{%
-    		\vspace{0.2mm}
-		\ifblank{#6}{}{\IfSubStr{#6}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #6\\}
-		#7%
+      \ifblank{#8}{}{\IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #8}}%
+	}{
+		&\parbox[t]{0.70\textwidth}{
+      \textbf{#3}\\{\small#4}\\
+
+      \ifblank{#8}{}{\IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #8}}%
+		\parbox[t]{0.17\textwidth}{\centering
+			{\raisebox{\ifblank{#7}{-16.5}{#7}\mydepth}{
+        \ifblank{#6}{
+          \includegraphics[height=5.2\myheight]{#5}
+        }{
+          \includegraphics[height=#6\myheight]{#5}}}}}%
 	}\\
+    &\parbox[t]{0.85\textwidth}{\mbox{}#9}\\
 }
 
 %----------------------------------------------------------------------------------------
