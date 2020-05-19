@@ -341,13 +341,13 @@
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\section}[1]{
-  \par\vspace{\parskip}
+  \par%\vspace{\parskip}
 	{%
 		\bf\Large\headingfont\color{headercolor}%
 		%\@sectioncolor
 		#1%
 	}
-  \par\vspace{1mm}
+  \par%\vspace{1mm}
 }
 
 \renewcommand{\subsection}[1]{
@@ -362,6 +362,12 @@
 %----------------------------------------------------------------------------------------
 %	 LONG LIST ENVIRONMENT
 %----------------------------------------------------------------------------------------
+
+\ExplSyntaxOn
+\newcommand{\multiplegraphics}[2]{
+  \clist_map_inline:nn { #2 } { \mbox{}\\\vspace{5pt}\includegraphics[#1]{##1} }
+}
+\ExplSyntaxOff
 
 \setlength{\tabcolsep}{0pt}
 
@@ -379,18 +385,28 @@
 		&\parbox[t]{0.85\textwidth}{
       \textbf{#3}\\{\small#4}\\
 
-      \ifblank{#8}{}{\IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #8}}%
+      \ifblank{#8}{}{
+        \parbox[t]{0.17\textwidth}{
+          \IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}}
+        }
+        \parbox[t]{0.68\textwidth}{#8}
+      }}%
 	}{
 		&\parbox[t]{0.70\textwidth}{
       \textbf{#3}\\{\small#4}\\
 
-      \ifblank{#8}{}{\IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}} #8}}%
+      \ifblank{#8}{}{
+        \parbox[t]{0.17\textwidth}{
+          \IfSubStr{#8}{,}{\textbf{Supervisors:}}{\textbf{Supervisor:}}
+        }
+        \parbox[t]{0.68\textwidth}{#8}
+      }}%
 		\parbox[t]{0.17\textwidth}{\centering
-			{\raisebox{\ifblank{#7}{-16.5}{#7}\mydepth}{
+			{\vspace{\ifblank{#7}{-7}{#7}\mydepth}
         \ifblank{#6}{
-          \includegraphics[height=5.2\myheight]{#5}
+          \multiplegraphics{height=5.2\myheight}{#5}
         }{
-          \includegraphics[height=#6\myheight]{#5}}}}}%
+          \multiplegraphics{height=#6\myheight}{#5}}}}%
 	}\\
     &\parbox[t]{0.85\textwidth}{\mbox{}#9}\\
 }
