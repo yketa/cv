@@ -12,9 +12,9 @@
 
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
 
-\usepackage{pstricks}
-\usepackage{fontawesome}
-\usepackage{fontspec}
+\RequirePackage{pstricks}
+\RequirePackage{fontawesome}
+\RequirePackage{fontspec}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage[absolute,overlay]{textpos}
@@ -55,6 +55,68 @@
     }%
   }%
 \fi
+
+%----------------------------------------------------------------------------------------
+%	 BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\RequirePackage[backend=biber, sorting=nymdt, style=phys, doi=true]{biblatex}
+\defbibheading{empty}{}
+
+% sorting of publications (https://tex.stackexchange.com/questions/46868/biblatex-sorting-by-date)
+\DeclareSortingTemplate{nymdt}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort[direction=discending]{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort[direction=discending]{
+    \field[padside=left,padwidth=2,padchar=0]{month}
+    \literal{00}
+  }
+  \sort[direction=discending]{
+    \field[padside=left,padwidth=2,padchar=0]{day}
+    \literal{00}
+  }
+}
+
+% remove numbers
+\DeclareFieldFormat{labelnumberwidth}{}
+\setlength{\biblabelsep}{0pt}
+
+% DOI
+\DeclareFieldFormat{doi}{\href{https://doi.org/#1}{[DOI:#1]}}
+
+% arXiv
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map{
+        \step[fieldsource=arxiv]
+        \step[fieldset=usera,origfieldval]
+    }
+  }
+}
+\DeclareFieldFormat{usera}{\href{https://arxiv.org/abs/#1}{\faUnlock~ arXiv:#1}}
+\AtEveryBibitem{%
+    \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
+        \iffieldundef{usera}{}{%
+          \space\printfield{usera}
+        }
+    }
+}
+
+% skip line
+
+\AtEveryBibitem{%
+    \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
+        \mbox{}\\
+    }
+}
 
 %----------------------------------------------------------------------------------------
 %	 INLINE IMAGE
@@ -156,7 +218,14 @@
 \pgfmathsetlength{\imagewidth}{5cm}
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
-\newcommand{\profilesection}[2]{\vspace{8pt}{\color{black!80} \huge #1 \rule[0.15\baselineskip]{#2}{1pt}}}
+\newcommand{\profilesection}[2]{
+  \vspace{2pt}
+  {\color{black!80}
+    \huge #1
+    \rule[0.15\baselineskip]{#2}{1pt}
+  }
+  \vspace{-8pt}
+}
 
 % Define custom commands for CV info
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
@@ -226,7 +295,7 @@
 
 \newcommand{\makeprofile}{
   \begin{tikzpicture}[remember picture,overlay]
-      \node [rectangle, fill=sidecolor, anchor=north, minimum width=8.5cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+      \node [rectangle, fill=sidecolor, anchor=north, minimum width=9.5cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
   \end{tikzpicture}
 
   %------------------------------------------------
@@ -292,7 +361,7 @@
 
     %------------------------------------------------
 
-    \profilesection{Formation}{2.6cm}
+    \profilesection{Formation}{2.3cm}
 
     \vspace{1mm}
 
@@ -302,7 +371,7 @@
 
         \vspace{1mm}
 
-    \profilesection{Comp\'etences}{1.4cm}
+    \profilesection{Comp\'etences}{1.1cm}
 
         \vspace{1mm}
 
@@ -326,7 +395,7 @@
 
         \vspace{1mm}
 
-        \profilesection{Int\'er\^ets}{3.5cm}
+        \profilesection{Int\'er\^ets}{3.2cm}
 
         \vspace{1mm}
 
@@ -379,7 +448,8 @@
 }
 
 \newcommand{\cvitem}[9]{%
-	\parbox[t]{0.14\textwidth}{\hfill#1\\\mbox{}\hfill- #2}
+  \vspace{-5pt}
+    \parbox[t]{0.14\textwidth}{\hfill#1\ifblank{#2}{}{\\\mbox{}\hfill- #2}}
   \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
 		&\parbox[t]{0.85\textwidth}{
@@ -387,7 +457,7 @@
 
       \ifblank{#8}{}{
         \parbox[t]{0.19\textwidth}{
-          \IfSubStr{#8}{,}{\textbf{Superviseurs:}}{\textbf{Superviseur:}}
+          \IfSubStr{#8}{,}{\textbf{Superviseurs :}}{\textbf{Superviseur :}}
         }
         \parbox[t]{0.66\textwidth}{#8}
       }}%
@@ -397,7 +467,7 @@
 
       \ifblank{#8}{}{
         \parbox[t]{0.19\textwidth}{
-          \IfSubStr{#8}{,}{\textbf{Superviseurs:}}{\textbf{Superviseur:}}
+          \IfSubStr{#8}{,}{\textbf{Superviseurs :}}{\textbf{Superviseur :}}
         }
         \parbox[t]{0.66\textwidth}{#8}
       }}%
@@ -434,8 +504,7 @@
 %	 MARGINS AND LINKS
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=7.6cm,top=-0.1cm,right=1cm,bottom=0.1cm,nohead,nofoot]{geometry}
-
+\RequirePackage[left=6.85cm,top=-0.1cm,right=0.35cm,bottom=0.1cm,nohead,nofoot]{geometry}
 
 \usepackage{smartdiagram}
 \smartdiagramset{
