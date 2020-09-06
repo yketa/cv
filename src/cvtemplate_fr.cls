@@ -25,6 +25,7 @@
 \RequirePackage{pgffor}
 \RequirePackage{marvosym}
 \RequirePackage{parskip}
+\RequirePackage{xstring}
 
 \usepackage{enumitem}
 \setlist[itemize]{leftmargin=*}
@@ -335,7 +336,7 @@
               \hspace{0mm} \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelopeO}}}
               \end{array}
               $}
-            & \href{mailto:\cvmail}{\cvmail} \\
+            & \href{mailto:\cvmail}{\begingroup \setlength{\tabcolsep}{-5pt} \renewcommand{\arraystretch}{1} \begin{tabular}{c} \StrBefore*{\cvmail}{@}\\@\StrBehind*{\cvmail}{@} \end{tabular} \endgroup} \\
             }
 
       \ifthenelse{\equal{\cvsite}{}}{}{
@@ -479,6 +480,7 @@
           \multiplegraphics{height=#6\myheight}{#5}}}}%
 	}\\
     &\parbox[t]{0.85\textwidth}{\mbox{}#9}\\
+  \vspace{-5pt}
 }
 
 %----------------------------------------------------------------------------------------
