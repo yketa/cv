@@ -212,7 +212,7 @@
 %----------------------------------------------------------------------------------------
 
 \setlength{\TPHorizModule}{1cm} % Left margin
-\setlength{\TPVertModule}{0.5cm} % Top margin
+\setlength{\TPVertModule}{0.20cm} % Top margin
 
 \newlength\imagewidth
 \newlength\imagescale
@@ -506,7 +506,7 @@
 %	 MARGINS AND LINKS
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=6.85cm,top=-0.1cm,right=0.35cm,bottom=0.1cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.85cm,top=-0.15cm,right=0.35cm,bottom=0.1cm,nohead,nofoot]{geometry}
 
 \usepackage{smartdiagram}
 \smartdiagramset{
