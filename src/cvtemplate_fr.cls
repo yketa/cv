@@ -12,6 +12,7 @@
 
 \def\arrow#1{\pspicture[shift=2pt](#1,0)\psline{->}(#1,0)\endpspicture}
 
+\RequirePackage[export]{adjustbox}
 \RequirePackage{pstricks}
 \RequirePackage{fontawesome}
 \RequirePackage{fontspec}
@@ -411,6 +412,7 @@
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\section}[1]{
+  \vspace{-1mm}
   \par%\vspace{\parskip}
 	{%
 		\bf\Large\headingfont\color{headercolor}%
@@ -475,11 +477,11 @@
 		\parbox[t]{0.17\textwidth}{\centering
 			{\vspace{\ifblank{#7}{-7}{#7}\mydepth}
         \ifblank{#6}{
-          \multiplegraphics{height=5.2\myheight}{#5}
+          \multiplegraphics{height=5.2\myheight, max width=0.12\textwidth}{#5}
         }{
-          \multiplegraphics{height=#6\myheight}{#5}}}}%
+          \multiplegraphics{height=#6\myheight, max width=0.12\textwidth}{#5}}}}%
 	}\\
-    &\parbox[t]{0.85\textwidth}{\mbox{}#9}\\
+    \ifblank{#9}{}{&\parbox[t]{0.85\textwidth}{\mbox{}#9}\\}
   \vspace{-5pt}
 }
 
@@ -506,7 +508,7 @@
 %	 MARGINS AND LINKS
 %----------------------------------------------------------------------------------------
 
-\RequirePackage[left=6.85cm,top=-0.15cm,right=0.35cm,bottom=0.1cm,nohead,nofoot]{geometry}
+\RequirePackage[left=6.85cm,top=-0.05cm,right=0.35cm,bottom=0.1cm,nohead,nofoot]{geometry}
 
 \usepackage{smartdiagram}
 \smartdiagramset{
