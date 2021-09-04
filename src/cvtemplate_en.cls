@@ -451,7 +451,7 @@
 }
 
 \newcommand{\cvitem}[9]{%
-  \vspace{-5pt}
+  \vspace{-6pt}
 	\parbox[t]{0.14\textwidth}{\hfill#1\ifblank{#2}{}{\\\mbox{}\hfill- #2}}
   \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
@@ -482,7 +482,7 @@
           \multiplegraphics{height=#6\myheight, max width=0.12\textwidth}{#5}}}}%
 	}\\
     \ifblank{#9}{}{&\parbox[t]{0.85\textwidth}{\mbox{}#9}\\}
-  \vspace{-5pt}
+  \vspace{-6pt}
 }
 
 %----------------------------------------------------------------------------------------
