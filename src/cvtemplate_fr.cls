@@ -451,7 +451,7 @@
 }
 
 \newcommand{\cvitem}[9]{%
-  \vspace{-6pt}
+  \vspace{-2pt}
     \parbox[t]{0.14\textwidth}{\hfill#1\ifblank{#2}{}{\\\mbox{}\hfill- #2}}
   \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
@@ -459,6 +459,7 @@
       \textbf{#3}\\{\small#4}\\
 
       \ifblank{#8}{}{
+        \vspace{-5pt}
         \parbox[t]{0.19\textwidth}{
           \IfSubStr{#8}{,}{\textbf{Superviseurs :}}{\textbf{Superviseur :}}
         }
@@ -469,6 +470,7 @@
       \textbf{#3}\\{\small#4}\\
 
       \ifblank{#8}{}{
+        \vspace{-5pt}
         \parbox[t]{0.19\textwidth}{
           \IfSubStr{#8}{,}{\textbf{Superviseurs :}}{\textbf{Superviseur :}}
         }
