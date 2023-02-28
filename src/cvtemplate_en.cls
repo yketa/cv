@@ -306,7 +306,7 @@
 
     %-----------------------------------------------
 
-    \vspace{4mm}
+    \vspace{1.25mm}
 
     {\bf\LARGE\color{darkgray}\cvname}
 
@@ -412,10 +412,10 @@
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\section}[1]{
-  \vspace{-1mm}
+  \vspace{-4.5mm}
   \par%\vspace{\parskip}
 	{%
-		\bf\Large\headingfont\color{headercolor}%
+		\bf\large\headingfont\color{headercolor}%
 		%\@sectioncolor
 		#1%
 	}
