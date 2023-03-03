@@ -87,13 +87,11 @@
   }
 }
 
+% underline name
 \renewcommand*{\mkbibnamegiven}[1]{%
 \ifitemannotation{highlight}
 {\underline{#1}}
 {#1}}
-
-
-
 \renewcommand*{\mkbibnamefamily}[1]{%
 \ifitemannotation{highlight}
 {\underline{#1}}
