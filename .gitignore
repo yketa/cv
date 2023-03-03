@@ -3,3 +3,4 @@ Icon*
 src/aux
 src/*.pdf
 cv_old
+**/.*.swp
