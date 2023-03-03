@@ -87,6 +87,21 @@
   }
 }
 
+\renewcommand*{\mkbibnamegiven}[1]{%
+\ifitemannotation{highlight}
+{\underline{#1}}
+{#1}}
+
+
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+\ifitemannotation{highlight}
+{\underline{#1}}
+{#1}}
+
+% journal name in italics
+\DeclareFieldFormat{journaltitle}{\mkbibitalic{#1}}
+
 % remove numbers
 \DeclareFieldFormat{labelnumberwidth}{}
 \setlength{\biblabelsep}{0pt}
@@ -247,20 +262,25 @@
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
 
 % Command for printing skill progress bars
-\newcommand\programming[2]{
+% \newcommand\programming[2]{
+% 	\renewcommand{\programming}{
+% 		\begin{tikzpicture}
+% 			\foreach [count=\i] \x/\y in {#1}{
+% 				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
+% 				\draw[fill=white,pink](0,\i) rectangle (\y,\i+0.4);
+% 				\node [above right] at (0,\i+0.35) {\x};
+% 			}
+% 		\end{tikzpicture}
+% %		\vspace{3mm}
+% %		\begin{tikzpicture}
+% %			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ #2 years experience};
+% %		\end{tikzpicture}
+% %		\vspace{-8mm}
+% 	}
+% }
+\newcommand\programming[1]{
 	\renewcommand{\programming}{
-		\begin{tikzpicture}
-			\foreach [count=\i] \x/\y in {#1}{
-				\draw[fill=maingray,maingray] (0,\i) rectangle (6,\i+0.4);
-				\draw[fill=white,pink](0,\i) rectangle (\y,\i+0.4);
-				\node [above right] at (0,\i+0.35) {\x};
-			}
-		\end{tikzpicture}
-%		\vspace{3mm}
-%		\begin{tikzpicture}
-%			\node [above right] at (0, 4) {0 years \arrow{1.4} ~ #2 years experience};
-%		\end{tikzpicture}
-%		\vspace{-8mm}
+		{#1}
 	}
 }
 \newcommand\education[1]{
@@ -295,6 +315,15 @@
 %  SIDEBAR LAYOUT
 %----------------------------------------------------------------------------------------
 
+\newcommand{\makeblankprofile}{
+  \begin{tikzpicture}[remember picture,overlay]
+      \node [rectangle, fill=sidecolor, anchor=north, minimum width=9.5cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
+  \end{tikzpicture}
+}
+
+\let\oldnewpage\newpage
+\renewcommand{\newpage}{\oldnewpage\makeblankprofile}
+
 \newcommand{\makeprofile}{
   \begin{tikzpicture}[remember picture,overlay]
       \node [rectangle, fill=sidecolor, anchor=north, minimum width=9.5cm, minimum height=\paperheight+1cm] (box) at (-5cm,0.5cm){};
@@ -325,7 +354,7 @@
      \ifthenelse{\equal{\cvbirthday}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faBirthdayCake}}
+              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faCalendar}}
               \end{array}
               $}
             & \cvbirthday \\
@@ -445,7 +474,7 @@
 
 % New environment for the long list
 \newenvironment{cvbody}{%
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}\hfill
 }{%
 	\end{tabular*}
 }
