@@ -88,10 +88,10 @@
 }
 
 % underline name
-\renewcommand*{\mkbibnamegiven}[1]{%
-\ifitemannotation{highlight}
-{\underline{#1}}
-{#1}}
+% \renewcommand*{\mkbibnamegiven}[1]{%
+% \ifitemannotation{highlight}
+% {\underline{#1}}
+% {#1}}
 \renewcommand*{\mkbibnamefamily}[1]{%
 \ifitemannotation{highlight}
 {\underline{#1}}
@@ -333,7 +333,7 @@
 
     %-----------------------------------------------
 
-    \vspace{1.25mm}
+    \vspace{3.75mm}
 
     {\bf\LARGE\color{darkgray}\cvname}
 
@@ -440,9 +440,9 @@
 
 \renewcommand{\section}[1]{
   \vspace{-4.5mm}
-  \par%\vspace{\parskip}
+  \par\vspace{\parskip}
 	{%
-		\bf\large\headingfont\color{headercolor}%
+		\bf\Large\headingfont\color{headercolor}%
 		%\@sectioncolor
 		#1%
 	}
