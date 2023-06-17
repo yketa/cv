@@ -333,7 +333,7 @@
 
     %-----------------------------------------------
 
-    \vspace{3.75mm}
+    \vspace{0mm}
 
     {\bf\LARGE\color{darkgray}\cvname}
 
@@ -439,7 +439,7 @@
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\section}[1]{
-  \vspace{-4.5mm}
+  \vspace{-7.5mm}
   \par\vspace{\parskip}
 	{%
 		\bf\Large\headingfont\color{headercolor}%
