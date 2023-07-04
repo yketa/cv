@@ -14,7 +14,7 @@
 
 \RequirePackage[export]{adjustbox}
 \RequirePackage{pstricks}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{fontspec}
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
@@ -129,7 +129,7 @@
 
 \AtEveryBibitem{%
     \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
-        \mbox{}\\
+        \mbox{}\\\vspace{-2pt}
     }
 }
 
@@ -246,6 +246,7 @@
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvbirthday}[1]{\renewcommand{\cvbirthday}{#1}}
+\newcommand{\cvnationality}[1]{\renewcommand{\cvnationality}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
@@ -352,16 +353,25 @@
      \ifthenelse{\equal{\cvbirthday}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faCalendar}}
+              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faCalendar[regular]}}
               \end{array}
               $}
             & \cvbirthday \\
             }
 
+     \ifthenelse{\equal{\cvnationality}{}}{}{
+            {$
+              \begin{array}{l}
+              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faPassport}}
+              \end{array}
+              $}
+            & \cvnationality \\
+            }
+
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{0mm} \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelopeO}}}
+              \hspace{-0.375mm} \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelope[regular]}}}
               \end{array}
               $}
             & \href{mailto:\cvmail}{\begingroup \setlength{\tabcolsep}{-5pt} \renewcommand{\arraystretch}{1} \begin{tabular}{c} \StrBefore*{\cvmail}{@}\\@\StrBehind*{\cvmail}{@} \end{tabular} \endgroup} \\
