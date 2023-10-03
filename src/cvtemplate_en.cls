@@ -234,12 +234,12 @@
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
 \newcommand{\profilesection}[2]{
-  \vspace{2pt}
+  \vspace{0pt}
   {\color{black!80}
     \huge #1
     \rule[0.15\baselineskip]{#2}{1pt}
   }
-  \vspace{-8pt}
+  \vspace{-10pt}
 }
 
 % Define custom commands for CV info
@@ -371,10 +371,11 @@
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{-0.375mm} \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelope[regular]}}}
+              \hspace{-0.375mm} \huge \raisebox{-1pt}{\href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelope[regular]}}}}
               \end{array}
               $}
-            & \href{mailto:\cvmail}{\begingroup \setlength{\tabcolsep}{-5pt} \renewcommand{\arraystretch}{1} \begin{tabular}{c} \StrBefore*{\cvmail}{@}\\@\StrBehind*{\cvmail}{@} \end{tabular} \endgroup} \\
+              & \href{mailto:\cvmail}{\cvmail}\\
+%             & \href{mailto:\cvmail}{\begingroup \setlength{\tabcolsep}{-5pt} \renewcommand{\arraystretch}{1} \begin{tabular}{c} \StrBefore*{\cvmail}{@}\\@\StrBehind*{\cvmail}{@} \end{tabular} \endgroup} \\
             }
 
       \ifthenelse{\equal{\cvsite}{}}{}{
