@@ -13,4 +13,5 @@ src/*.log
 src/*.out
 src/*.pdf
 src/*.run.xml
+src/*.synctex.gz
 src/*.xdv

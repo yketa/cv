@@ -28,7 +28,12 @@
 \RequirePackage{parskip}
 \RequirePackage{xstring}
 
-\usepackage{enumitem}
+\RequirePackage{worldflags}
+\flagsdefault[width=7pt, framewidth=0pt]
+\let\oldworldflag\worldflag
+\renewcommand\worldflag[1]{\oldworldflag{#1}\hspace{-2.5pt}}
+
+\RequirePackage{enumitem}
 \setlist[itemize]{leftmargin=*}
 
 \RequirePackage[hidelinks]{hyperref}
