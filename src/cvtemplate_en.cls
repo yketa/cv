@@ -230,6 +230,7 @@
 %	 SIDEBAR DEFINITIONS
 %----------------------------------------------------------------------------------------
 
+\setlength{\emergencystretch}{3em}
 \setlength{\TPHorizModule}{1cm} % Left margin
 \setlength{\TPVertModule}{0.20cm} % Top margin
 
@@ -282,28 +283,23 @@
 % %		\vspace{-8mm}
 % 	}
 % }
-\newcommand\programming[1]{
-	\renewcommand{\programming}{
-		{#1}
-	}
-}
 \newcommand\education[1]{
 	\renewcommand{\education}{
 		{#1}
 	}
 }
-\newcommand\interests[1]{
-	\renewcommand{\interests}{
-		{#1}
-	}
-}
-\newcommand\operatingsystems[1]{
-	\renewcommand{\operatingsystems}{
+\newcommand\programming[1]{
+	\renewcommand{\programming}{
 		{#1}
 	}
 }
 \newcommand\languages[1]{
 	\renewcommand{\languages}{
+		{#1}
+	}
+}
+\newcommand\interests[1]{
+	\renewcommand{\interests}{
 		{#1}
 	}
 }
@@ -380,7 +376,6 @@
               \end{array}
               $}
               & \href{mailto:\cvmail}{\cvmail}\\
-%             & \href{mailto:\cvmail}{\begingroup \setlength{\tabcolsep}{-5pt} \renewcommand{\arraystretch}{1} \begin{tabular}{c} \StrBefore*{\cvmail}{@}\\@\StrBehind*{\cvmail}{@} \end{tabular} \endgroup} \\
             }
 
       \ifthenelse{\equal{\cvsite}{}}{}{
@@ -423,12 +418,6 @@
 	 {\large \textbf{Programming}}
 
 		 \programming
-
-%        \vspace{1mm}
-%
-%         {\large \textbf{Operating systems}}
-%
-%		 \operatingsystems
 
         \vspace{1mm}
 
