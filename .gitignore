@@ -13,5 +13,6 @@ src/*.log
 src/*.out
 src/*.pdf
 src/*.run.xml
+src/*-SAVE-ERROR
 src/*.synctex.gz
 src/*.xdv
