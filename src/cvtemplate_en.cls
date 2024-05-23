@@ -98,9 +98,10 @@
 % {\underline{#1}}
 % {#1}}
 \renewcommand*{\mkbibnamefamily}[1]{%
-\ifitemannotation{highlight}
-{\underline{#1}}
-{#1}}
+\ifitemannotation{equalhighlight}{\underline{#1}*}{%
+\ifitemannotation{highlight}{\underline{#1}}{#1}%
+\ifitemannotation{equal}{*}{}}
+}
 
 % journal name in italics
 \DeclareFieldFormat{journaltitle}{\mkbibitalic{#1}}
