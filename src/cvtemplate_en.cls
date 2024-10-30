@@ -478,9 +478,11 @@
 
 % New environment for the long list
 \newenvironment{cvbody}{%
+    \vspace{5pt}
 	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}\hfill
 }{%
 	\end{tabular*}
+    \vspace{5pt}
 }
 
 \newcommand{\cvitem}[9]{%
