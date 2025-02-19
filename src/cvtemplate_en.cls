@@ -131,6 +131,24 @@
     }
 }
 
+% bioRxiv
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map{
+        \step[fieldsource=biorxiv]
+        \step[fieldset=userb,origfieldval]
+    }
+  }
+}
+\DeclareFieldFormat{userb}{\href{https://biorxiv.org/content/#1}{\faUnlock~ bioRxiv:#1}}
+\AtEveryBibitem{%
+    \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
+        \iffieldundef{userb}{}{%
+          \space\printfield{userb}
+        }
+    }
+}
+
 % skip line
 
 \AtEveryBibitem{%
@@ -255,6 +273,7 @@
 \newcommand{\cvbirthday}[1]{\renewcommand{\cvbirthday}{#1}}
 \newcommand{\cvnationality}[1]{\renewcommand{\cvnationality}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
+\newcommand{\cvorcid}[1]{\renewcommand{\cvorcid}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
@@ -385,17 +404,21 @@
               \hspace{0mm} \huge \href{https://\cvsite}{\textnormal{\textcolor{black}{\faGlobe}}}
               \end{array}
               $}
-            & \href{https://\cvsite}{\cvsite} \\
+            & \ifthenelse{\equal{\cvgithub}{}}{
+                \href{https://\cvsite}{\cvsite}
+                }{
+                \vspace{-25pt} \begin{tabular}{l} \href{https://\cvsite}{\cvsite}\\[-12.5pt] \href{https://github.com/\cvgithub}{github.com/\cvgithub} \end{tabular}
+                }\\
             }
 
-      \ifthenelse{\equal{\cvgithub}{}}{}{
+      \ifthenelse{\equal{\cvorcid}{}}{}{
           {$
             \begin{array}{l}
             % \hspace{0mm} \huge
-            \hspace{0mm} \huge \href{https://github.com/\cvgithub}{\textnormal{\faGithub}}
+            \hspace{0mm} \huge \href{https://orcid.org/\cvorcid}{\textnormal{\faOrcid}}
             \end{array}
-            % $} & \href{https://www.github.com/\cvgithub}{\cvgithub} \\
-            $} & \href{https://github.com/\cvgithub}{github.com/\cvgithub} \\
+            $}
+          & \href{https://orcid.org/\cvorcid}{\cvorcid} \\
           }
 
     \end{tabular}
