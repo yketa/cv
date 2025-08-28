@@ -259,9 +259,9 @@
 \pgfmathsetlength{\imagescale}{\imagewidth/600}
 
 \newcommand{\profilesection}[2]{
-  \vspace{0pt}
+  \vspace{-3pt}
   {\color{black!80}
-    \huge #1
+    \hspace{-1.25pt}\huge #1
     \rule[0.15\baselineskip]{#2}{1pt}
   }
   \vspace{-10pt}
@@ -271,6 +271,7 @@
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvlinkedin}[1]{\renewcommand{\cvlinkedin}{#1}}
 \newcommand{\cvbirthday}[1]{\renewcommand{\cvbirthday}{#1}}
+\newcommand{\cvlocation}[1]{\renewcommand{\cvlocation}{#1}}
 \newcommand{\cvnationality}[1]{\renewcommand{\cvnationality}{#1}}
 \newcommand{\cvgithub}[1]{\renewcommand{\cvgithub}{#1}}
 \newcommand{\cvorcid}[1]{\renewcommand{\cvorcid}{#1}}
@@ -355,11 +356,11 @@
 
     %-----------------------------------------------
 
-    \vspace{0mm}
+    \vspace{-0.25mm}
 
     {\bf\LARGE\color{darkgray}\cvname}
 
-    \vspace{0.5mm}
+    \vspace{-0.75mm}
 
     %------------------------------------------------
 
@@ -367,41 +368,24 @@
 
     %------------------------------------------------
 
-    \vspace{1mm}
+    \vspace{0.5mm}
     \renewcommand{\arraystretch}{2}
-    \begin{tabular}{p{1cm} @{\hskip 0.25cm}p{5cm}}
-
-     \ifthenelse{\equal{\cvbirthday}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faCalendar[regular]}}
-              \end{array}
-              $}
-            & \cvbirthday \\
-            }
-
-     \ifthenelse{\equal{\cvnationality}{}}{}{
-            {$
-              \begin{array}{l}
-              \hspace{0mm} \huge \textnormal{\textcolor{black}{\faPassport}}
-              \end{array}
-              $}
-            & \cvnationality \\
-            }
+    \hspace{-8.75pt}
+    \begin{tabular}{c @{\hskip 0.2cm}p{5cm}}
 
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{-0.375mm} \huge \raisebox{-1pt}{\href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelope[regular]}}}}
+              \huge \href{mailto:\cvmail}{\textnormal{\textcolor{black}{\faEnvelope[regular]}}}
               \end{array}
               $}
-              & \href{mailto:\cvmail}{\cvmail}\\
+              & \raisebox{3pt}{\href{mailto:\cvmail}{\cvmail}}\\
             }
 
       \ifthenelse{\equal{\cvsite}{}}{}{
             {$
               \begin{array}{l}
-              \hspace{0mm} \huge \href{https://\cvsite}{\textnormal{\textcolor{black}{\faGlobe}}}
+              \huge \href{https://\cvsite}{\textnormal{\textcolor{black}{\faGlobe}}}
               \end{array}
               $}
             & \ifthenelse{\equal{\cvgithub}{}}{
@@ -418,10 +402,30 @@
             \hspace{0mm} \huge \href{https://orcid.org/\cvorcid}{\textnormal{\faOrcid}}
             \end{array}
             $}
-          & \href{https://orcid.org/\cvorcid}{\cvorcid} \\
+          & \raisebox{2pt}{\href{https://orcid.org/\cvorcid}{\cvorcid}} \\
           }
 
+     \ifthenelse{\equal{\cvlocation}{}}{}{
+            {$
+              \begin{array}{l}
+              \huge \textnormal{\textcolor{black}{\faMapMarker*[regular]}}
+              \end{array}
+              $}
+            & \vspace{-23.75pt} \begin{tabular}{l} \cvlocation \end{tabular} \\
+            }
+
+     \ifthenelse{\equal{\cvbirthday}{}}{}{
+            {$
+              \begin{array}{l}
+              \huge \textnormal{\textcolor{black}{\faCalendar[regular]}}
+              \end{array}
+              $}
+            & \cvbirthday \\
+            }
+
     \end{tabular}
+
+    \vspace{1mm}
 
     %------------------------------------------------
 
@@ -437,8 +441,6 @@
 
     \profilesection{Skills}{4.2cm}
 
-        \vspace{1mm}
-
 	 {\large \textbf{Programming}}
 
 		 \programming
@@ -451,7 +453,7 @@
 
        %------------------------------------------------
 
-        \vspace{1mm}
+        \vspace{5mm}
 
         \profilesection{Interests}{2.9cm}
 
@@ -468,14 +470,14 @@
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\section}[1]{
-  \vspace{-7.5mm}
+  \vspace{-7.75mm}
   \par\vspace{\parskip}
 	{%
 		\bf\Large\headingfont\color{headercolor}%
 		%\@sectioncolor
 		#1%
 	}
-  \par%\vspace{1mm}
+  \par\vspace{-1mm}
 }
 
 \renewcommand{\subsection}[1]{
@@ -484,8 +486,6 @@
 	}
 	\par\vspace{.25\parskip}%
 }
-
-\pagestyle{empty}
 
 %----------------------------------------------------------------------------------------
 %	 LONG LIST ENVIRONMENT
@@ -509,11 +509,11 @@
 }
 
 \newcommand{\cvitem}[9]{%
-  \vspace{-2pt}
-	\parbox[t]{0.14\textwidth}{\hfill#1\ifblank{#2}{}{\\\mbox{}\hfill- #2}}
+  \vspace{-5.75pt}
+	\parbox[t]{0.125\textwidth}{\hfill#1\ifblank{#2}{}{\\\mbox{}\hfill- #2}}
   \parbox[t]{0.01\textwidth}{}
 	\ifblank{#5}{
-		&\parbox[t]{0.85\textwidth}{
+		&\parbox[t]{0.865\textwidth}{
       \textbf{#3}\\{\small#4}\\
 
       \ifblank{#8}{}{
@@ -524,7 +524,7 @@
         \parbox[t]{0.68\textwidth}{#8}
       }}%
 	}{
-		&\parbox[t]{0.70\textwidth}{
+		&\parbox[t]{0.715\textwidth}{
       \textbf{#3}\\{\small#4}\\
 
       \ifblank{#8}{}{
@@ -540,9 +540,10 @@
           \multiplegraphics{height=5.2\myheight, max width=0.12\textwidth}{#5}
         }{
           \multiplegraphics{height=#6\myheight, max width=0.12\textwidth}{#5}}}}%
+        \vspace{-0.225pt}
 	}\\
     \ifblank{#9}{}{&\parbox[t]{0.85\textwidth}{\mbox{}#9}\\}
-  \vspace{-6pt}
+  %\vspace{-6pt}
 }
 
 %----------------------------------------------------------------------------------------
