@@ -477,7 +477,7 @@
 		%\@sectioncolor
 		#1%
 	}
-  \par\vspace{-1mm}
+  \par\vspace{-1.25mm}
 }
 
 \renewcommand{\subsection}[1]{
